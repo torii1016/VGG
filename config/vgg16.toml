@@ -1,0 +1,208 @@
+[VGG16]
+    [VGG16.network]
+    name = 'VGG16'
+    model_start_key = 1
+
+    [VGG16.layer1]
+    type = 'conv2d'
+    name = 'conv1_1'
+    output_channel = 64
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer2]
+    type = 'conv2d'
+    name = 'conv1_2'
+    output_channel = 64
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer3]
+    type = 'maxpool'
+    karnel_size = [1,2,2,1]
+    stride = [1,2,2,1]
+    padding = 'SAME'
+
+    [VGG16.layer4]
+    type = 'conv2d'
+    name = 'conv2_1'
+    output_channel = 128
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer5]
+    type = 'conv2d'
+    name = 'conv2_2'
+    output_channel = 128
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer6]
+    type = 'maxpool'
+    karnel_size = [1,2,2,1]
+    stride = [1,2,2,1]
+    padding = 'SAME'
+
+    [VGG16.layer7]
+    type = 'conv2d'
+    name = 'conv3_1'
+    output_channel = 256
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer8]
+    type = 'conv2d'
+    name = 'conv3_2'
+    output_channel = 256
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer9]
+    type = 'conv2d'
+    name = 'conv3_3'
+    output_channel = 256
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer10]
+    type = 'maxpool'
+    karnel_size = [1,2,2,1]
+    stride = [1,2,2,1]
+    padding = 'SAME'
+
+    [VGG16.layer11]
+    type = 'conv2d'
+    name = 'conv4_1'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer12]
+    type = 'conv2d'
+    name = 'conv4_2'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = true
+
+    [VGG16.layer13]
+    type = 'conv2d'
+    name = 'conv4_3'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = true
+
+    [VGG16.layer14]
+    type = 'maxpool'
+    karnel_size = [1,2,2,1]
+    stride = [1,2,2,1]
+    padding = 'SAME'
+
+    [VGG16.layer15]
+    type = 'conv2d'
+    name = 'conv5_1'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = false
+
+    [VGG16.layer16]
+    type = 'conv2d'
+    name = 'conv5_2'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = true
+
+    [VGG16.layer17]
+    type = 'conv2d'
+    name = 'conv5_3'
+    output_channel = 512
+    stride = 1
+    fileter_size = [3,3]
+    padding = 'SAME'
+    bn=false
+    activation_fn = 'ReLU'
+    extra_feature = true
+
+    [VGG16.layer18]
+    type = 'maxpool'
+    karnel_size = [1,2,2,1]
+    stride = [1,2,2,1]
+    padding = 'SAME'
+
+    [VGG16.layer19]
+    type = 'reshape'
+    shape = [100, -1]  #batch_size
+
+    [VGG16.layer20]
+    type = 'fc'
+    name = 'fc1'
+    output_channel = 4096
+    bn=true
+    activation_fn = 'ReLU'
+    dropout = false
+    drate = 0
+
+    [VGG16.layer21]
+    type = 'fc'
+    name = 'fc2'
+    output_channel = 4096
+    bn=true
+    activation_fn = 'ReLU'
+    dropout = false
+    drate = 0
+
+    [VGG16.layer22]
+    type = 'fc'
+    name = 'fc3'
+    output_channel = 10
+    bn=false
+    activation_fn = 'None'
+    dropout = false
+    drate = 0
