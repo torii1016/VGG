@@ -3,17 +3,12 @@ import numpy as np
 import pickle
 
 import cv2
+from utils.dataset_loader import Dataset
 
-class Cifar10Dataset(object):
+class Cifar10Dataset(Dataset):
     def __init__(self, config):
-        self._data_folder_path = config["dataset"]["path"]
-        self._test_size = config["dataset"]["test_data_num"]
-        self._label_name = config["dataset"]["label_name"]
-
-        self._image_width = config["dataset"]["image_width"]
-        self._image_height = config["dataset"]["image_height"]
-        self._image_channel = config["dataset"]["image_channels"]
-        self._output_class = config["dataset"]["output_class"]
+        super().__init__(config)
+        self._data_folder_path = config["path"]
 
         self._loading_dataset()
 
@@ -61,21 +56,7 @@ class Cifar10Dataset(object):
         self._images = np.concatenate((images1, images2, images3, images4, images5), axis=0)
         self._labels = np.concatenate((labels1, labels2, labels3, labels4, labels5), axis=0)
 
-        self._test_images =  self._images[:self._test_size]
-        self._test_labels =  self._labels[:self._test_size]
-        self._train_images = self._images[self._test_size:]
-        self._train_labels = self._labels[self._test_size:]
-
-
-    def get_train_data(self, batch_size=50):
-        choice_data = np.random.choice(range(len(self._train_images)), batch_size, replace=False)
-        return self._train_images[choice_data], self._train_labels[choice_data]
-
-    def get_test_data(self):
-        return self._test_images, self._test_labels
-
-    def get_label_name(self):
-        return self._label_name
-
-    def get_image_info(self):
-        return self._image_width, self._image_height, self._image_channel
+        self._test_images =  self._images[:self._test_data_num]
+        self._test_labels =  self._labels[:self._test_data_num]
+        self._train_images = self._images[self._test_data_num:]
+        self._train_labels = self._labels[self._test_data_num:]

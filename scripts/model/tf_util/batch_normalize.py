@@ -34,6 +34,10 @@ def batch_norm(name, x, decay_rate = 0.99, is_training = True):
         avg_var_assign_op = tf.compat.v1.assign(avg_var,
                                       decay_rate * avg_var
                                       + (1 - decay_rate) * var)
+        """
+        avg_mean_assign_op = tf.compat.v1.assign(avg_mean, mean)
+        avg_var_assign_op = tf.compat.v1.assign(avg_var, var)
+        """
 
         with tf.control_dependencies([avg_mean_assign_op, avg_var_assign_op]):
             ret = gamma * (x - mean) / tf.sqrt(1e-6 + var) + beta

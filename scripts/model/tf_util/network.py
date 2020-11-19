@@ -25,6 +25,7 @@ def fully_connection(inputs,
 
         if bn:
             outputs = batch_norm(name, outputs, is_training)
+            #outputs = tf.layers.batch_normalization(outputs, name=name, training=is_training)
 
         if activation_fn is not None:
             outputs = tf.nn.relu(outputs)
@@ -57,6 +58,7 @@ def conv2d(inputs,
         
         if bn:
             outputs = batch_norm(name, outputs, is_training)
+            #outputs = tf.layers.batch_normalization(outputs, name=name, training=is_training)
 
         if activation_fn is not None:
             outputs = tf.nn.relu(outputs)

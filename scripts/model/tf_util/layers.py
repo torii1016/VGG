@@ -15,7 +15,7 @@ class Layers(object):
         return ret
     
     def get_variables(self):
-        t_var = tf.trainable_variables()
+        t_var = tf.compat.v1.trainable_variables()
         ret = []
         for var in t_var:
             if self._check_name_scope(var.name):
