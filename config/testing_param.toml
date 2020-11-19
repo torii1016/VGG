@@ -34,7 +34,6 @@
 network = "config/vgg16.toml"
 dataset = "MNIST"
 lr = 0.001 #0.001
-val_step = 10
 use_gpu = true
 save_model_path = "saved_model"
 save_model_name = "model.dump"
